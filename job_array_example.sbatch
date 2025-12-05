@@ -37,9 +37,9 @@ echo "This is Array Task ID: $SLURM_ARRAY_TASK_ID"
 echo "Running on node: $(hostname)"
 echo "Process ID (PID): $$"
 
-# Execute the core task: Sleep for 60 seconds (1 minute)
+# Execute the core task: Sleep for 30 seconds (0.5 minutes)
 # This simulates your actual computational work
-echo "Starting 60 second computation..."
-sleep 60
+echo "Starting 30 second computation..."
+sleep 30
 
 echo "Computation finished. Task exiting."
