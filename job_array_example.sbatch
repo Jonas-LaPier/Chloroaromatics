@@ -28,7 +28,7 @@
 # Send output to a named file for each task
 # %A = Job ID, %a = Array Task ID
 # This prevents output from one task overwriting another's
-#SBATCH mkdir -p outputs
+mkdir -p outputs
 #SBATCH --output=outputs/array_output.%A_%a.out
 #SBATCH --error=array_error.%A_%a.err
 
