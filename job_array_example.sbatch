@@ -6,9 +6,9 @@
 # The full name will look like: array_sim.12345_1.out
 #SBATCH --job-name=array_sim
 
-# Set the wall clock time limit to 1 minute
+# Set the wall clock time limit to 35 seconds
 # Each array task will run for this duration
-#SBATCH --time=0-00:01:00
+#SBATCH --time=0-00:00:35
 
 #SBATCH --cpus-per-task=1 # request 1 CPU per task
 #SBATCH --ntasks=1 # request 1 task per job
@@ -22,7 +22,7 @@
 # Send output to a named file for each task
 # %A = Job ID, %a = Array Task ID
 # This prevents output from one task overwriting another's
-mkdir -p outputs
+mkdir -p outputs/
 #SBATCH --output=outputs/array_output.%A_%a.out
 #SBATCH --error=outputs/array_error.%A_%a.err
 
