@@ -10,16 +10,10 @@
 # Each array task will run for this duration
 #SBATCH --time=0-00:01:00
 
-# Request resources for *each* individual task in the array
-# We need only 1 CPU core per task
-#SBATCH --cpus-per-task=1
-# Request only 1 task in the allocation (Slurm will manage the array tasks)
-#SBATCH --ntasks=1
-# Request 500 MB of memory per task
-#SBATCH --mem-per-cpu=500M
-
-# Request only 1 node for simplicity, though the tasks may be spread out
-#SBATCH --nodes=1
+#SBATCH --cpus-per-task=1 # request 1 CPU per task
+#SBATCH --ntasks=1 # request 1 task per job
+#SBATCH --mem-per-cpu=500M # request 500 MB of memory per CPU
+#SBATCH --nodes=1 # request 1 node
 
 # Specify the array range: 1 to 4 (submitting 4 jobs)
 # The variable $SLURM_ARRAY_TASK_ID will range from 1 to 4
@@ -30,7 +24,7 @@
 # This prevents output from one task overwriting another's
 mkdir -p outputs
 #SBATCH --output=outputs/array_output.%A_%a.out
-#SBATCH --error=array_error.%A_%a.err
+#SBATCH --error=outputs/array_error.%A_%a.err
 
 # --- Job Execution Commands ---
 
