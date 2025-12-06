@@ -63,38 +63,21 @@ echo "Output files will be saved to:"
 echo "  - Checkpoint: $CHK_OUTPUT_DIR/${GJF_FILENAME}.chk"
 echo "  - Log: $LOG_OUTPUT_DIR/${GJF_FILENAME}.log"
 
-# Create a temporary directory for this job's scratch files
-SCRATCH_DIR="/scratch/${USER}/gaussian_${SLURM_ARRAY_JOB_ID}_${SLURM_ARRAY_TASK_ID}"
-mkdir -p "$SCRATCH_DIR"
+# Run Gaussian 16 directly in the log output directory
+cd "$LOG_OUTPUT_DIR"
 
-# Copy input file to scratch directory
-cp "$GJF_FILE" "$SCRATCH_DIR/${GJF_FILENAME}.gjf"
-cd "$SCRATCH_DIR"
-
-# Run Gaussian 16
-# Replace 'g16' with the correct command on your Sherlock cluster
 echo "Starting Gaussian 16 computation at $(date)..."
-g16 < "${GJF_FILENAME}.gjf" > "${GJF_FILENAME}.log"
+g16 < "$GJF_FILE" > "${GJF_FILENAME}.log"
 GAUSSIAN_EXIT=$?
 echo "Gaussian 16 computation finished at $(date) with exit code: $GAUSSIAN_EXIT"
 
-# Copy output files back to the designated directories
+# Move checkpoint file to the checkpoint output directory if it was created
 if [ -f "${GJF_FILENAME}.chk" ]; then
-    cp "${GJF_FILENAME}.chk" "$(cd - >/dev/null && pwd)/$CHK_OUTPUT_DIR/"
+    mv "${GJF_FILENAME}.chk" "../$CHK_OUTPUT_DIR/"
     echo "Checkpoint file saved to $CHK_OUTPUT_DIR/${GJF_FILENAME}.chk"
 else
-    echo "WARNING: Checkpoint file not found in scratch directory"
+    echo "WARNING: Checkpoint file not found"
 fi
 
-if [ -f "${GJF_FILENAME}.log" ]; then
-    cp "${GJF_FILENAME}.log" "$(cd - >/dev/null && pwd)/$LOG_OUTPUT_DIR/"
-    echo "Log file saved to $LOG_OUTPUT_DIR/${GJF_FILENAME}.log"
-else
-    echo "WARNING: Log file not found in scratch directory"
-fi
-
-# Clean up scratch directory
-cd - >/dev/null
-rm -rf "$SCRATCH_DIR"
-
+echo "Log file saved to $LOG_OUTPUT_DIR/${GJF_FILENAME}.log"
 echo "Task completed successfully."
