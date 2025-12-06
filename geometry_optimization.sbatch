@@ -64,12 +64,9 @@ echo "Output files will be saved to:"
 echo "  - Checkpoint: $CHK_OUTPUT_DIR/${GJF_FILENAME}.chk"
 echo "  - Log: $LOG_OUTPUT_DIR/${GJF_FILENAME}.log"
 
-# Run Gaussian 16 directly in the log output directory
-cd "$LOG_OUTPUT_DIR"
-
 echo "Starting Gaussian 16 computation at $(date)..."
 module load chemistry gaussian
-g16 < "$GJF_FILE_ABS" > "${GJF_FILENAME}.log"
+g16 < "$GJF_FILE_ABS" > "geometry_logs/${GJF_FILENAME}.log"
 GAUSSIAN_EXIT=$?
 echo "Gaussian 16 computation finished at $(date) with exit code: $GAUSSIAN_EXIT"
 
