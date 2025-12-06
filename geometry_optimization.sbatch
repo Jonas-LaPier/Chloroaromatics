@@ -18,8 +18,8 @@
 #SBATCH --array=1-4
 
 # Send output to a named file for each task
-#SBATCH --output=outputs/gaussian.%A_%a.out
-#SBATCH --error=outputs/gaussian.%A_%a.err
+#SBATCH --output=slurm_out/gaussian.%A_%a.out
+#SBATCH --error=slurm_error/gaussian.%A_%a.err
 
 # --- Configuration Variables (Modify these for your workflow) ---
 INPUT_DIR="geometry_input"        # Directory containing .gjf input files
@@ -27,7 +27,7 @@ CHK_OUTPUT_DIR="geometry_chks"    # Directory for .chk checkpoint files
 LOG_OUTPUT_DIR="geometry_logs"    # Directory for Gaussian log files
 
 # Ensure output directories exist
-mkdir -p outputs "$CHK_OUTPUT_DIR" "$LOG_OUTPUT_DIR"
+mkdir -p slurm_out slurm_error "$CHK_OUTPUT_DIR" "$LOG_OUTPUT_DIR"
 
 # --- Job Execution Commands ---
 
@@ -57,6 +57,7 @@ fi
 
 GJF_FILE="${GJF_FILES[$FILE_INDEX]}"
 GJF_FILENAME=$(basename "$GJF_FILE" .gjf)
+GJF_FILE_ABS="$(cd "$(dirname "$GJF_FILE")" && pwd)/$(basename "$GJF_FILE")"
 
 echo "Processing: $GJF_FILE"
 echo "Output files will be saved to:"
@@ -67,7 +68,7 @@ echo "  - Log: $LOG_OUTPUT_DIR/${GJF_FILENAME}.log"
 cd "$LOG_OUTPUT_DIR"
 
 echo "Starting Gaussian 16 computation at $(date)..."
-g16 < "$GJF_FILE" > "${GJF_FILENAME}.log"
+g16 < "$GJF_FILE_ABS" > "${GJF_FILENAME}.log"
 GAUSSIAN_EXIT=$?
 echo "Gaussian 16 computation finished at $(date) with exit code: $GAUSSIAN_EXIT"
 

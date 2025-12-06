@@ -57,6 +57,8 @@ fi
 
 GJF_FILE="${GJF_FILES[$FILE_INDEX]}"
 GJF_FILENAME=$(basename "$GJF_FILE" .gjf)
+# Convert to absolute path to ensure it's accessible from any working directory
+GJF_FILE_ABS="$(cd "$(dirname "$GJF_FILE")" && pwd)/$(basename "$GJF_FILE")"
 
 echo "Processing: $GJF_FILE"
 echo "Output files will be saved to:"
@@ -67,7 +69,7 @@ echo "  - Log: $LOG_OUTPUT_DIR/${GJF_FILENAME}.log"
 cd "$LOG_OUTPUT_DIR"
 
 echo "Starting Gaussian 16 computation at $(date)..."
-g16 < "$GJF_FILE" > "${GJF_FILENAME}.log"
+g16 < "$GJF_FILE_ABS" > "${GJF_FILENAME}.log"
 GAUSSIAN_EXIT=$?
 echo "Gaussian 16 computation finished at $(date) with exit code: $GAUSSIAN_EXIT"
 
