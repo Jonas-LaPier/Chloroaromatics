@@ -70,13 +70,5 @@ g16 < "geometry_input/${GJF_FILENAME}.gjf" > "geometry_logs/${GJF_FILENAME}.log"
 GAUSSIAN_EXIT=$?
 echo "Gaussian 16 computation finished at $(date) with exit code: $GAUSSIAN_EXIT"
 
-# Move checkpoint file to the checkpoint output directory if it was created
-if [ -f "${GJF_FILENAME}.chk" ]; then
-    mv "${GJF_FILENAME}.chk" "../$CHK_OUTPUT_DIR/"
-    echo "Checkpoint file saved to $CHK_OUTPUT_DIR/${GJF_FILENAME}.chk"
-else
-    echo "WARNING: Checkpoint file not found"
-fi
-
 echo "Log file saved to $LOG_OUTPUT_DIR/${GJF_FILENAME}.log"
 echo "Task completed successfully."
