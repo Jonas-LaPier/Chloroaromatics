@@ -6,16 +6,16 @@
 #SBATCH --job-name=gaussian_array
 
 # Adjust time limit based on your Gaussian job complexity (e.g., 2 hours)
-#SBATCH --time=0-02:00:00
+#SBATCH --time=0-00:05:00
 
 #SBATCH --cpus-per-task=4        # request 4 CPUs per task (Gaussian can use multiple)
 #SBATCH --ntasks=1               # request 1 task per job
-#SBATCH --mem-per-cpu=2GB        # request 2 GB per CPU (8 GB total)
+#SBATCH --mem-per-cpu=1GB        # request 1 GB per CPU (4 GB total)
 #SBATCH --nodes=1                # request 1 node
 
 # Specify the array range: adjust based on number of .gjf files
 # This will be set dynamically below
-#SBATCH --array=1-4
+#SBATCH --array=1-3
 
 # Send output to a named file for each task
 #SBATCH --output=slurm_out/gaussian.%A_%a.out
@@ -66,7 +66,7 @@ echo "The working directory is: $(pwd)"
 
 echo "Starting Gaussian 16 computation at $(date)..."
 module load chemistry gaussian
-g16 < "$GJF_FILENAME" > "geometry_logs/${GJF_FILENAME}.log"
+g16 < "geometry_input/${GJF_FILENAME}.gjf" > "geometry_logs/${GJF_FILENAME}.log"
 GAUSSIAN_EXIT=$?
 echo "Gaussian 16 computation finished at $(date) with exit code: $GAUSSIAN_EXIT"
 
