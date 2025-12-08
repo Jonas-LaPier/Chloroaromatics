@@ -57,16 +57,16 @@ fi
 
 GJF_FILE="${GJF_FILES[$FILE_INDEX]}"
 GJF_FILENAME=$(basename "$GJF_FILE" .gjf)
-GJF_FILE_ABS="$(cd "$(dirname "$GJF_FILE")" && pwd)/$(basename "$GJF_FILE")"
 
 echo "Processing: $GJF_FILE"
 echo "Output files will be saved to:"
 echo "  - Checkpoint: $CHK_OUTPUT_DIR/${GJF_FILENAME}.chk"
 echo "  - Log: $LOG_OUTPUT_DIR/${GJF_FILENAME}.log"
+echo "The working directory is: $(pwd)"
 
 echo "Starting Gaussian 16 computation at $(date)..."
 module load chemistry gaussian
-g16 < "$GJF_FILE_ABS" > "geometry_logs/${GJF_FILENAME}.log"
+g16 < "$GJF_FILENAME" > "geometry_logs/${GJF_FILENAME}.log"
 GAUSSIAN_EXIT=$?
 echo "Gaussian 16 computation finished at $(date) with exit code: $GAUSSIAN_EXIT"
 
