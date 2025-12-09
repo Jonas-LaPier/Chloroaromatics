@@ -5,7 +5,7 @@ import os
 GAUSSIAN_HEADER = """%mem=2GB
 %nprocshare=1
 %chk=geometry_chks/{filename}.chk
-# opt am1 pop=None
+# opt am1 SCF=XQC
 
 {title}
 
@@ -234,8 +234,6 @@ if __name__ == "__main__":
     print("-" * 50)
     print(f"Successfully simulated the creation of {len(generated_files)} GJF files.")
     print("File names generated (e.g., for use in a SLURM Job Array):")
-    for f in generated_files:
-        print(f"- {f}")
     print("-" * 50)
     '''
 
@@ -247,8 +245,6 @@ if __name__ == "__main__":
     print("-" * 50)
     print(f"Successfully simulated the creation of {len(generated_files)} GJF files.")
     print("File names generated (e.g., for use in a SLURM Job Array):")
-    for f in generated_files:
-        print(f"- {f}")
     print("-" * 50)
 
     # Generate neutral radical intermediates
@@ -259,6 +255,4 @@ if __name__ == "__main__":
     print("-" * 50)
     print(f"Successfully simulated the creation of {len(generated_files)} GJF files.")
     print("File names generated (e.g., for use in a SLURM Job Array):")
-    for f in generated_files:
-        print(f"- {f}")
     print("-" * 50)

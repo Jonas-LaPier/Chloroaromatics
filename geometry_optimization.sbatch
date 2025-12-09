@@ -6,7 +6,7 @@
 #SBATCH --job-name=gaussian_array
 
 # Adjust time limit based on your Gaussian job complexity (e.g., 2 hours)
-#SBATCH --time=0-00:05:00
+#SBATCH --time=0-00:02:00
 
 #SBATCH --cpus-per-task=2        # request 4 CPUs per task (Gaussian can use multiple)
 #SBATCH --ntasks=1               # request 1 task per job
