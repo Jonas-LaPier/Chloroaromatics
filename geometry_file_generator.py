@@ -5,7 +5,7 @@ import os
 GAUSSIAN_HEADER = """%mem=2GB
 %nprocshare=1
 %chk=geometry_chks/{filename}.chk
-# opt am1 SCF(maxcyc=10000)
+# opt am1 SCF(maxcyc=100000)
 
 {title}
 
@@ -103,17 +103,16 @@ def generate_gjf_files(position_list):
     return filepath, gjf_content
 
 
-def generate_anion_intermediates(position_list):
+def generate_anion_radicals(position_list):
     """
-    Generate GJF files for every way of removing one chlorine from the
-    provided `position_list`. Each produced species is an anion intermediate
-    (charge = -1, multiplicity = 0).
+    Generate a single GJF anion-radical file for the provided isomer.
 
-    Filenames follow the pattern where the retained chlorines are shown as
-    digits and the removed chlorine is represented by an underscore. Example:
-    original (1,2,3,4,5) removing 3 -> '12_45_ClBzAnionIntermediate.gjf'.
+    This does NOT remove any atoms — it takes the original isomer geometry,
+    adds one electron (charge = -1) and sets multiplicity = 2 (doublet).
 
-    Returns a list of (filepath, content) tuples for files written.
+    Filename format: '<positions>ClBzAnionRadical.gjf' (e.g. '135ClBzAnionRadical.gjf').
+
+    Returns a list with a single (filepath, content) tuple for the file written.
     """
     results = []
 
@@ -123,51 +122,37 @@ def generate_anion_intermediates(position_list):
     # Ensure input positions is a tuple/list of ints
     original_positions = tuple(position_list)
 
-    for removed in original_positions:
-        # Build the compact pattern showing retained digits and underscore
-        pattern_parts = []
-        for i in range(1, 7):
-            if i in original_positions:
-                if i == removed:
-                    pattern_parts.append("_")
-                else:
-                    pattern_parts.append(str(i))
-        pattern = "".join(pattern_parts)
-        filename_base = f"{pattern}ClBzAnionIntermediate"
-        title = f"Anion Intermediate (removed {removed}) {pattern}"
+    # Build file for the intact isomer but as an anion radical
+    position_string = "".join(map(str, original_positions))
+    filename_base = f"{position_string}ClBzAnionRadical"
+    title = f"{len(original_positions)}-Chloro-Benzene Anion Radical ({position_string})"
 
-        # New positions: remove the selected chlorine
-        new_positions = tuple(p for p in original_positions if p != removed)
+    # Electronic state for anion radical: one extra electron, doublet
+    charge = "-1"
+    multiplicity = "2"
 
-        # Anion radical electronic state
-        charge = "-1"
-        multiplicity = "1"
+    # Assemble atoms: keep all substituents (Cl where present, H otherwise)
+    all_atoms = list(C_ATOMS)
+    for i in range(6):
+        is_chlorine = (i + 1) in original_positions
+        coords = SUBSTITUENT_COORDS[i]
+        if is_chlorine:
+            all_atoms.append(f"Cl {coords}")
+        else:
+            all_atoms.append(f"H  {coords}")
 
-        # Assemble atoms
-        all_atoms = list(C_ATOMS)
-        for i in range(6):
-            is_chlorine = (i + 1) in new_positions
-            coords = SUBSTITUENT_COORDS[i]
-            if is_chlorine:
-                all_atoms.append(f"Cl {coords}")
-            elif i == removed - 1:
-                # The coodinate is skipped (no atom) for the removed chlorine
-                continue
-            else:
-                all_atoms.append(f"H  {coords}")
+    gjf_content = GAUSSIAN_HEADER.format(filename=filename_base, title=title, charge=charge, multiplicity=multiplicity)
+    gjf_content += "\n".join(all_atoms)
+    gjf_content += "\n\n"
 
-        gjf_content = GAUSSIAN_HEADER.format(filename=filename_base, title=title, charge=charge, multiplicity=multiplicity)
-        gjf_content += "\n".join(all_atoms)
-        gjf_content += "\n\n"
+    filepath = os.path.join(OUTPUT_DIR, f"{filename_base}.gjf")
+    with open(filepath, "w") as f:
+        f.write(gjf_content)
 
-        filepath = os.path.join(OUTPUT_DIR, f"{filename_base}.gjf")
-        with open(filepath, "w") as f:
-            f.write(gjf_content)
+    print(f"--- Wrote Anion Radical GJF: {filepath} ---")
+    results.append((filepath, gjf_content))
 
-        print(f"--- Wrote Anion Radical GJF: {filepath} ---")
-        results.append((filepath, gjf_content))
-
-    return filepath
+    return results
 
 def generate_neutral_radicals_intermediates(position_list):
     """
@@ -240,6 +225,7 @@ if __name__ == "__main__":
     
     generated_files = []
     
+    '''
     # Generate initial chlorobenzene isomers
     for positions in CHLORINE_POSITIONS:
         filepath, _ = generate_gjf_files(positions)
@@ -251,10 +237,11 @@ if __name__ == "__main__":
     for f in generated_files:
         print(f"- {f}")
     print("-" * 50)
+    '''
 
-    # Generate anion intermediates
+    # Generate anion radicals
     for positions in CHLORINE_POSITIONS:
-        filepath = generate_anion_intermediates(positions)
+        filepath = generate_anion_radicals(positions)
         generated_files.append(filepath)
 
     print("-" * 50)
