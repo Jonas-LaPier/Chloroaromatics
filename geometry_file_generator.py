@@ -2,8 +2,8 @@ import itertools
 import os
 
 # --- Configuration for Gaussian Header ---
-GAUSSIAN_HEADER = """%mem=8GB
-%nprocshare=4
+GAUSSIAN_HEADER = """%mem=2GB
+%nprocshare=1
 %chk=geometry_chks/{filename}.chk
 # opt am1
 
