@@ -5,7 +5,7 @@ import os
 GAUSSIAN_HEADER = """%mem=2GB
 %nprocshare=1
 %chk=geometry_chks/{filename}.chk
-# opt am1 SCF(maxcyc=100000)
+# opt am1 SCF=(Converge)
 
 {title}
 
