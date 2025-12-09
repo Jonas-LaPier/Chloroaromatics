@@ -2,7 +2,7 @@ import os
 from pathlib import Path
 
 # --- Configuration ---
-GEOMETRY_COMPLETED_DIR = "geometry_inputs_completed"
+GEOMETRY_COMPLETED_DIR = "geometry_inputs"
 FREQUENCY_OUTPUT_DIR = "frequency_inputs"
 GEOMETRY_CHK_DIR = "geometry_chks"
 FREQUENCY_CHK_DIR = "frequency_chks"

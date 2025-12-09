@@ -22,7 +22,7 @@
 #SBATCH --error=slurm_error/gaussian.%A_%a.err
 
 # --- Configuration Variables (Modify these for your workflow) ---
-INPUT_DIR="geometry_input"        # Directory containing .gjf input files
+INPUT_DIR="geometry_inputs"        # Directory containing .gjf input files
 CHK_OUTPUT_DIR="geometry_chks"    # Directory for .chk checkpoint files
 LOG_OUTPUT_DIR="geometry_logs"    # Directory for Gaussian log files
 
@@ -74,7 +74,7 @@ echo "The working directory is: $(pwd)"
 
 echo "Starting Gaussian 16 computation at $(date)..."
 module load chemistry gaussian
-g16 < "geometry_input/${GJF_FILENAME}.gjf" > "geometry_logs/${GJF_FILENAME}.log"
+g16 < "${INPUT_DIR}/${GJF_FILENAME}.gjf" > "${LOG_OUTPUT_DIR}/${GJF_FILENAME}.log"
 GAUSSIAN_EXIT=$?
 echo "Gaussian 16 computation finished at $(date) with exit code: $GAUSSIAN_EXIT"
 

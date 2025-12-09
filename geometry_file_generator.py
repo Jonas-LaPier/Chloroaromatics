@@ -29,10 +29,10 @@ C_ATOMS = [
 SUBSTITUENT_COORDS = [
     '-4.67483  -2.13035  0.00000', # Site 1
     '-4.76193   1.03987 -0.00000', # Site 2
-    ' 0.81614  -1.97951  0.00000', # Site 3
-    '-1.88580  -3.64003  0.00000', # Site 4
-    '-2.05998   2.70040 -0.00000', # Site 5
-    ' 0.72905   1.19071  0.00000', # Site 6
+    '-2.05998   2.70040 -0.00000', # Site 3
+    ' 0.72905   1.19071  0.00000', # Site 4
+    ' 0.81614  -1.97951  0.00000', # Site 5
+    '-1.88580  -3.64003  0.00000', # Site 6
 ]
 
 # --- 12 Unique Chlorobenzene Isomers (Cl positions are 1-based indices) ---
@@ -225,7 +225,6 @@ if __name__ == "__main__":
     
     generated_files = []
     
-    '''
     # Generate initial chlorobenzene isomers
     for positions in CHLORINE_POSITIONS:
         filepath, _ = generate_gjf_files(positions)
@@ -235,7 +234,7 @@ if __name__ == "__main__":
     print(f"Successfully simulated the creation of {len(generated_files)} GJF files.")
     print("File names generated (e.g., for use in a SLURM Job Array):")
     print("-" * 50)
-    '''
+    
 
     # Generate anion radicals
     for positions in CHLORINE_POSITIONS:
