@@ -6,7 +6,7 @@
 #SBATCH --job-name=gaussian_array
 
 # Adjust time limit based on your Gaussian job complexity (e.g., 2 hours)
-#SBATCH --time=0-00:30:00
+#SBATCH --time=0-00:01:00
 
 #SBATCH --cpus-per-task=4        # request 4 CPUs per task (Gaussian can use multiple)
 #SBATCH --ntasks=1               # request 1 task per job
@@ -15,7 +15,7 @@
 
 # Specify the array range: will be calculated dynamically based on input files
 # Note: You can override this by passing --array=N-M on the command line
-#SBATCH --array=1-2
+#SBATCH --array=1-58
 
 # Send output to a named file for each task
 #SBATCH --output=slurm_out/gaussian.%A_%a.out
