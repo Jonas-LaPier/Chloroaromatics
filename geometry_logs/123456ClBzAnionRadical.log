@@ -1,7 +1,7 @@
  Entering Gaussian System, Link 0=g16
  Initial command:
- /share/software/user/restricted/gaussian/g16.B01/l1.exe "/home/users/jlapier/Chloroaromatics/Gau-17689.inp" -scrdir="/home/users/jlapier/Chloroaromatics/"
- Entering Link 1 = /share/software/user/restricted/gaussian/g16.B01/l1.exe PID=     17690.
+ /share/software/user/restricted/gaussian/g16.B01/l1.exe "/home/users/jlapier/Chloroaromatics/Gau-20963.inp" -scrdir="/home/users/jlapier/Chloroaromatics/"
+ Entering Link 1 = /share/software/user/restricted/gaussian/g16.B01/l1.exe PID=     20966.
   
  Copyright (c) 1988-2017, Gaussian, Inc.  All Rights Reserved.
   
@@ -74,20 +74,21 @@
  
  ******************************************
  Gaussian 16:  ES64L-G16RevB.01 20-Dec-2017
-                 8-Dec-2025 
+                 9-Dec-2025 
  ******************************************
  %mem=2GB
  %nprocshare=1
  Will use up to    1 processors via shared memory.
  %chk=geometry_chks/123456ClBzAnionRadical.chk
- ------------------
- # opt am1 pop=None
- ------------------
+ -----------------
+ # opt am1 SCF=XQC
+ -----------------
  1/18=20,19=15,26=1,38=1/1,3;
  2/9=110,12=2,17=6,18=5,40=1/2;
  3/5=2,25=1,41=700000,71=1/1,2,3;
  4/35=1/1;
- 5/5=2,35=1,38=5/2;
+ 5/5=2,8=3,13=1,35=1,38=5/2,8;
+ 6/7=2,8=2,9=2,10=2,28=1/1;
  7//1,2,3,16;
  1/18=20,19=15,26=1/3(2);
  2/9=110/2;
@@ -95,10 +96,11 @@
  2/9=110/2;
  3/5=2,25=1,41=700000,71=1,135=20/1,2,3;
  4/5=5,16=3,35=1/1;
- 5/5=2,35=1,38=5/2;
+ 5/5=2,8=3,13=1,35=1,38=5/2,8;
  7//1,2,3,16;
  1/18=20,19=15,26=1/3(-5);
  2/9=110/2;
+ 6/7=2,8=2,9=2,10=2,19=2,28=1/1;
  99/9=1/99;
  ---------------------------------------
  6-Chloro-Benzene Anion Radical (123456)
@@ -292,7 +294,7 @@
  Initial guess <Sx>= 0.0000 <Sy>= 0.0000 <Sz>= 0.5000 <S**2>= 0.7500 S= 0.5000
  Keep J ints in memory in canonical form, NReq=866607.
  Overlap will be assumed to be unity.
- Requested convergence on RMS density matrix=1.00D-08 within 128 cycles.
+ Requested convergence on RMS density matrix=1.00D-08 within  32 cycles.
  Requested convergence on MAX density matrix=1.00D-06.
  Requested convergence on             energy=1.00D-06.
  No special actions if energy rises.
@@ -309,6 +311,141 @@
  <L.S>=  0.00000000000    
  Annihilation of the first spin contaminant:
  S**2 before annihilation     0.8195,   after     0.7508
+ QCSCF skips out because SCF is already converged.
+
+ **********************************************************************
+
+            Population analysis using the SCF Density.
+
+ **********************************************************************
+
+ Orbital symmetries:
+ Alpha Orbitals:
+       Occupied  (A') (A') (A') (A') (A') (A') (A') (A') (A') (A')
+                 (A') (A') (A') (A') (A') (A") (A') (A') (A') (A")
+                 (A") (A") (A") (A") (A') (A') (A') (A') (A') (A')
+                 (A") (A") (A") (A")
+       Virtual   (A") (A') (A') (A') (A') (A") (A') (A') (A') (A')
+                 (A') (A') (A') (A')
+ Beta  Orbitals:
+       Occupied  (A') (A') (A') (A') (A') (A') (A') (A') (A') (A')
+                 (A') (A') (A') (A') (A') (A') (A") (A') (A') (A")
+                 (A") (A") (A") (A") (A') (A') (A') (A') (A') (A')
+                 (A") (A") (A")
+       Virtual   (A") (A') (A') (A") (A') (A') (A') (A') (A") (A')
+                 (A') (A') (A') (A') (A')
+ The electronic state is 2-A".
+ Alpha  occ. eigenvalues --   -1.30243  -1.24636  -1.23959  -1.23183  -1.22391
+ Alpha  occ. eigenvalues --   -1.22026  -1.19500  -0.98636  -0.98089  -0.72985
+ Alpha  occ. eigenvalues --   -0.71967  -0.54062  -0.49711  -0.49293  -0.43092
+ Alpha  occ. eigenvalues --   -0.42689  -0.42429  -0.36995  -0.36853  -0.36496
+ Alpha  occ. eigenvalues --   -0.36156  -0.32987  -0.32683  -0.32060  -0.31144
+ Alpha  occ. eigenvalues --   -0.30630  -0.30590  -0.30505  -0.29566  -0.28670
+ Alpha  occ. eigenvalues --   -0.27630  -0.22307  -0.21479  -0.09978
+ Alpha virt. eigenvalues --    0.14758   0.15349   0.16440   0.17582   0.18323
+ Alpha virt. eigenvalues --    0.19341   0.19651   0.20127   0.29578   0.30031
+ Alpha virt. eigenvalues --    0.30933   0.31386   0.32869   0.33220
+  Beta  occ. eigenvalues --   -1.29554  -1.24645  -1.23885  -1.23207  -1.22367
+  Beta  occ. eigenvalues --   -1.22057  -1.19324  -0.98497  -0.96380  -0.71952
+  Beta  occ. eigenvalues --   -0.71388  -0.53840  -0.49503  -0.48781  -0.43100
+  Beta  occ. eigenvalues --   -0.42138  -0.41599  -0.36869  -0.36803  -0.36276
+  Beta  occ. eigenvalues --   -0.35165  -0.33017  -0.32108  -0.31806  -0.31005
+  Beta  occ. eigenvalues --   -0.30628  -0.30588  -0.30445  -0.29611  -0.28701
+  Beta  occ. eigenvalues --   -0.26847  -0.20433  -0.17567
+  Beta virt. eigenvalues --    0.13631   0.15507   0.16973   0.17546   0.17551
+  Beta virt. eigenvalues --    0.19330   0.19754   0.21566   0.24339   0.29989
+  Beta virt. eigenvalues --    0.31297   0.31454   0.32430   0.33549   0.34181
+          Condensed to atoms (all electrons):
+               1          2          3          4          5          6
+     1  C    4.206484   0.000000   0.000000   0.000000   0.000000   0.000000
+     2  C    0.000000   4.024330   0.000000   0.000000   0.000000   0.000000
+     3  C    0.000000   0.000000   4.024345   0.000000   0.000000   0.000000
+     4  C    0.000000   0.000000   0.000000   4.206487   0.000000   0.000000
+     5  C    0.000000   0.000000   0.000000   0.000000   4.024334   0.000000
+     6  C    0.000000   0.000000   0.000000   0.000000   0.000000   4.024340
+     7  Cl   0.000000   0.000000   0.000000   0.000000   0.000000   0.000000
+     8  Cl   0.000000   0.000000   0.000000   0.000000   0.000000   0.000000
+     9  Cl   0.000000   0.000000   0.000000   0.000000   0.000000   0.000000
+    10  Cl   0.000000   0.000000   0.000000   0.000000   0.000000   0.000000
+    11  Cl   0.000000   0.000000   0.000000   0.000000   0.000000   0.000000
+    12  Cl   0.000000   0.000000   0.000000   0.000000   0.000000   0.000000
+               7          8          9         10         11         12
+     1  C    0.000000   0.000000   0.000000   0.000000   0.000000   0.000000
+     2  C    0.000000   0.000000   0.000000   0.000000   0.000000   0.000000
+     3  C    0.000000   0.000000   0.000000   0.000000   0.000000   0.000000
+     4  C    0.000000   0.000000   0.000000   0.000000   0.000000   0.000000
+     5  C    0.000000   0.000000   0.000000   0.000000   0.000000   0.000000
+     6  C    0.000000   0.000000   0.000000   0.000000   0.000000   0.000000
+     7  Cl   7.079031   0.000000   0.000000   0.000000   0.000000   0.000000
+     8  Cl   0.000000   7.086781   0.000000   0.000000   0.000000   0.000000
+     9  Cl   0.000000   0.000000   7.086776   0.000000   0.000000   0.000000
+    10  Cl   0.000000   0.000000   0.000000   7.079027   0.000000   0.000000
+    11  Cl   0.000000   0.000000   0.000000   0.000000   7.079032   0.000000
+    12  Cl   0.000000   0.000000   0.000000   0.000000   0.000000   7.079031
+          Atomic-Atomic Spin Densities.
+               1          2          3          4          5          6
+     1  C    0.551054   0.000000   0.000000   0.000000   0.000000   0.000000
+     2  C    0.000000  -0.014299   0.000000   0.000000   0.000000   0.000000
+     3  C    0.000000   0.000000  -0.014262   0.000000   0.000000   0.000000
+     4  C    0.000000   0.000000   0.000000   0.551062   0.000000   0.000000
+     5  C    0.000000   0.000000   0.000000   0.000000  -0.014295   0.000000
+     6  C    0.000000   0.000000   0.000000   0.000000   0.000000  -0.014265
+     7  Cl   0.000000   0.000000   0.000000   0.000000   0.000000   0.000000
+     8  Cl   0.000000   0.000000   0.000000   0.000000   0.000000   0.000000
+     9  Cl   0.000000   0.000000   0.000000   0.000000   0.000000   0.000000
+    10  Cl   0.000000   0.000000   0.000000   0.000000   0.000000   0.000000
+    11  Cl   0.000000   0.000000   0.000000   0.000000   0.000000   0.000000
+    12  Cl   0.000000   0.000000   0.000000   0.000000   0.000000   0.000000
+               7          8          9         10         11         12
+     1  C    0.000000   0.000000   0.000000   0.000000   0.000000   0.000000
+     2  C    0.000000   0.000000   0.000000   0.000000   0.000000   0.000000
+     3  C    0.000000   0.000000   0.000000   0.000000   0.000000   0.000000
+     4  C    0.000000   0.000000   0.000000   0.000000   0.000000   0.000000
+     5  C    0.000000   0.000000   0.000000   0.000000   0.000000   0.000000
+     6  C    0.000000   0.000000   0.000000   0.000000   0.000000   0.000000
+     7  Cl  -0.002788   0.000000   0.000000   0.000000   0.000000   0.000000
+     8  Cl   0.000000  -0.016923   0.000000   0.000000   0.000000   0.000000
+     9  Cl   0.000000   0.000000  -0.016922   0.000000   0.000000   0.000000
+    10  Cl   0.000000   0.000000   0.000000  -0.002787   0.000000   0.000000
+    11  Cl   0.000000   0.000000   0.000000   0.000000  -0.002787   0.000000
+    12  Cl   0.000000   0.000000   0.000000   0.000000   0.000000  -0.002788
+ Mulliken charges and spin densities:
+               1          2
+     1  C   -0.206484   0.551054
+     2  C   -0.024330  -0.014299
+     3  C   -0.024345  -0.014262
+     4  C   -0.206487   0.551062
+     5  C   -0.024334  -0.014295
+     6  C   -0.024340  -0.014265
+     7  Cl  -0.079031  -0.002788
+     8  Cl  -0.086781  -0.016923
+     9  Cl  -0.086776  -0.016922
+    10  Cl  -0.079027  -0.002787
+    11  Cl  -0.079032  -0.002787
+    12  Cl  -0.079031  -0.002788
+ Sum of Mulliken charges =  -1.00000   1.00000
+ Mulliken charges and spin densities with hydrogens summed into heavy atoms:
+               1          2
+     1  C   -0.206484   0.551054
+     2  C   -0.024330  -0.014299
+     3  C   -0.024345  -0.014262
+     4  C   -0.206487   0.551062
+     5  C   -0.024334  -0.014295
+     6  C   -0.024340  -0.014265
+     7  Cl  -0.079031  -0.002788
+     8  Cl  -0.086781  -0.016923
+     9  Cl  -0.086776  -0.016922
+    10  Cl  -0.079027  -0.002787
+    11  Cl  -0.079032  -0.002787
+    12  Cl  -0.079031  -0.002788
+ Charge=             -1.0000 electrons
+ Dipole moment (field-independent basis, Debye):
+    X=              0.0001    Y=             -0.0000    Z=              0.0000  Tot=              0.0001
+ N-N= 4.195959637423D+02 E-N=-6.194988987099D+02  KE=-1.801702326318D+02
+ Symmetry A'   KE=-1.358794912369D+02
+ Symmetry A"   KE=-4.429074139486D+01
+ Symmetry A'   SP=-1.254552017826D-14
+ Symmetry A"   SP= 1.000000000000D+00
  Calling FoFJK, ICntrl=      2127 FMM=F ISym2X=1 I1Cent= 0 IOpClX= 1 NMat=1 NMatS=1 NMatT=0.
  ***** Axes restored to original set *****
  -------------------------------------------------------------------
@@ -520,7 +657,7 @@
  Initial guess <Sx>= 0.0000 <Sy>= 0.0000 <Sz>= 0.5000 <S**2>= 0.8195 S= 0.5342
  Keep J ints in memory in canonical form, NReq=866607.
  Overlap will be assumed to be unity.
- Requested convergence on RMS density matrix=1.00D-08 within 128 cycles.
+ Requested convergence on RMS density matrix=1.00D-08 within  32 cycles.
  Requested convergence on MAX density matrix=1.00D-06.
  Requested convergence on             energy=1.00D-06.
  No special actions if energy rises.
@@ -532,6 +669,7 @@
  <L.S>=  0.00000000000    
  Annihilation of the first spin contaminant:
  S**2 before annihilation     0.8233,   after     0.7508
+ QCSCF skips out because SCF is already converged.
  Calling FoFJK, ICntrl=      2127 FMM=F ISym2X=1 I1Cent= 0 IOpClX= 1 NMat=1 NMatS=1 NMatT=0.
  ***** Axes restored to original set *****
  -------------------------------------------------------------------
@@ -748,7 +886,7 @@
  Initial guess <Sx>= 0.0000 <Sy>= 0.0000 <Sz>= 0.5000 <S**2>= 0.8233 S= 0.5360
  Keep J ints in memory in canonical form, NReq=866607.
  Overlap will be assumed to be unity.
- Requested convergence on RMS density matrix=1.00D-08 within 128 cycles.
+ Requested convergence on RMS density matrix=1.00D-08 within  32 cycles.
  Requested convergence on MAX density matrix=1.00D-06.
  Requested convergence on             energy=1.00D-06.
  No special actions if energy rises.
@@ -760,6 +898,7 @@
  <L.S>=  0.00000000000    
  Annihilation of the first spin contaminant:
  S**2 before annihilation     0.8282,   after     0.7509
+ QCSCF skips out because SCF is already converged.
  Calling FoFJK, ICntrl=      2127 FMM=F ISym2X=1 I1Cent= 0 IOpClX= 1 NMat=1 NMatS=1 NMatT=0.
  ***** Axes restored to original set *****
  -------------------------------------------------------------------
@@ -976,7 +1115,7 @@
  Initial guess <Sx>= 0.0000 <Sy>= 0.0000 <Sz>= 0.5000 <S**2>= 0.8282 S= 0.5383
  Keep J ints in memory in canonical form, NReq=866607.
  Overlap will be assumed to be unity.
- Requested convergence on RMS density matrix=1.00D-08 within 128 cycles.
+ Requested convergence on RMS density matrix=1.00D-08 within  32 cycles.
  Requested convergence on MAX density matrix=1.00D-06.
  Requested convergence on             energy=1.00D-06.
  No special actions if energy rises.
@@ -988,6 +1127,7 @@
  <L.S>=  0.00000000000    
  Annihilation of the first spin contaminant:
  S**2 before annihilation     0.8268,   after     0.7509
+ QCSCF skips out because SCF is already converged.
  Calling FoFJK, ICntrl=      2127 FMM=F ISym2X=1 I1Cent= 0 IOpClX= 1 NMat=1 NMatS=1 NMatT=0.
  ***** Axes restored to original set *****
  -------------------------------------------------------------------
@@ -1203,7 +1343,7 @@
  Initial guess <Sx>= 0.0000 <Sy>= 0.0000 <Sz>= 0.5000 <S**2>= 0.8268 S= 0.5377
  Keep J ints in memory in canonical form, NReq=866607.
  Overlap will be assumed to be unity.
- Requested convergence on RMS density matrix=1.00D-08 within 128 cycles.
+ Requested convergence on RMS density matrix=1.00D-08 within  32 cycles.
  Requested convergence on MAX density matrix=1.00D-06.
  Requested convergence on             energy=1.00D-06.
  No special actions if energy rises.
@@ -1215,6 +1355,7 @@
  <L.S>=  0.00000000000    
  Annihilation of the first spin contaminant:
  S**2 before annihilation     0.8269,   after     0.7508
+ QCSCF skips out because SCF is already converged.
  Calling FoFJK, ICntrl=      2127 FMM=F ISym2X=1 I1Cent= 0 IOpClX= 1 NMat=1 NMatS=1 NMatT=0.
  ***** Axes restored to original set *****
  -------------------------------------------------------------------
@@ -1458,22 +1599,159 @@
      12         17           0        1.557110   -2.696236    0.000000
  ---------------------------------------------------------------------
  Rotational constants (GHZ):           0.4649121           0.4643220           0.2323084
- 1\1\GINC-SH02-01N04\FOpt\UAM1\ZDO\C6Cl6(1-,2)\JLAPIER\08-Dec-2025\0\\#
-  opt am1 pop=None\\6-Chloro-Benzene Anion Radical (123456)\\-1,2\C,-3.
- 2147042248,0.2023670066,0.\C,-1.9980920296,0.9323387701,0.\C,-0.785129
- 1483,0.2757700128,0.\C,-0.7310790046,-1.1420053155,0.\C,-1.9476913431,
- -1.8719771458,0.\C,-3.1606541226,-1.215408315,0.\Cl,-4.6257478324,-2.0
- 997378812,0.\Cl,-4.7094813102,1.011480154,0.\Cl,0.763698129,-1.9511185
- 345,0.\Cl,-1.8870128,-3.5821987006,0.\Cl,-2.0587708849,2.6425603415,0.
- \Cl,0.6799645664,1.1600995985,0.\\Version=ES64L-G16RevB.01\HF=-0.08006
- 75\S2=0.826851\S2-1=0.\S2A=0.75085\RMSD=9.052e-09\RMSF=1.851e-04\Dipol
- e=-0.0000009,0.0000003,0.\PG=CS [SG(C6Cl6)]\\@
+
+ **********************************************************************
+
+            Population analysis using the SCF Density.
+
+ **********************************************************************
+
+ Orbital symmetries:
+ Alpha Orbitals:
+       Occupied  (A') (A') (A') (A') (A') (A') (A') (A') (A') (A')
+                 (A') (A') (A') (A') (A') (A") (A') (A') (A') (A")
+                 (A") (A") (A") (A") (A') (A') (A') (A') (A') (A')
+                 (A") (A") (A") (A")
+       Virtual   (A") (A') (A') (A') (A') (A") (A') (A') (A') (A')
+                 (A') (A') (A') (A')
+ Beta  Orbitals:
+       Occupied  (A') (A') (A') (A') (A') (A') (A') (A') (A') (A')
+                 (A') (A') (A') (A') (A') (A") (A') (A') (A') (A")
+                 (A") (A") (A") (A") (A') (A') (A') (A') (A') (A')
+                 (A") (A") (A")
+       Virtual   (A") (A') (A") (A') (A') (A') (A') (A') (A") (A')
+                 (A') (A') (A') (A') (A')
+ The electronic state is 2-A".
+ Alpha  occ. eigenvalues --   -1.31202  -1.25723  -1.25011  -1.23781  -1.23167
+ Alpha  occ. eigenvalues --   -1.22711  -1.19155  -0.99257  -0.97249  -0.74166
+ Alpha  occ. eigenvalues --   -0.72121  -0.54897  -0.50523  -0.50382  -0.43481
+ Alpha  occ. eigenvalues --   -0.43193  -0.42485  -0.37647  -0.37273  -0.37140
+ Alpha  occ. eigenvalues --   -0.36643  -0.33043  -0.32941  -0.32095  -0.30844
+ Alpha  occ. eigenvalues --   -0.30368  -0.30004  -0.29741  -0.29077  -0.28245
+ Alpha  occ. eigenvalues --   -0.26680  -0.21002  -0.20757  -0.09602
+ Alpha virt. eigenvalues --    0.15919   0.17045   0.18125   0.18891   0.20047
+ Alpha virt. eigenvalues --    0.20138   0.21055   0.21447   0.30329   0.31221
+ Alpha virt. eigenvalues --    0.31736   0.31745   0.33333   0.34236
+  Beta  occ. eigenvalues --   -1.30588  -1.25732  -1.24871  -1.23804  -1.23111
+  Beta  occ. eigenvalues --   -1.22705  -1.18899  -0.99160  -0.95572  -0.72571
+  Beta  occ. eigenvalues --   -0.72133  -0.54693  -0.50184  -0.50014  -0.43492
+  Beta  occ. eigenvalues --   -0.42206  -0.42167  -0.37586  -0.37140  -0.36934
+  Beta  occ. eigenvalues --   -0.35588  -0.33081  -0.32249  -0.31822  -0.30671
+  Beta  occ. eigenvalues --   -0.30362  -0.29955  -0.29717  -0.29086  -0.28268
+  Beta  occ. eigenvalues --   -0.25849  -0.19832  -0.15965
+  Beta virt. eigenvalues --    0.14630   0.17198   0.17987   0.18609   0.18847
+  Beta virt. eigenvalues --    0.21131   0.21138   0.22942   0.24925   0.31202
+  Beta virt. eigenvalues --    0.32140   0.32169   0.32770   0.33927   0.35076
+          Condensed to atoms (all electrons):
+               1          2          3          4          5          6
+     1  C    4.232033   0.000000   0.000000   0.000000   0.000000   0.000000
+     2  C    0.000000   4.041839   0.000000   0.000000   0.000000   0.000000
+     3  C    0.000000   0.000000   4.041851   0.000000   0.000000   0.000000
+     4  C    0.000000   0.000000   0.000000   4.232034   0.000000   0.000000
+     5  C    0.000000   0.000000   0.000000   0.000000   4.041839   0.000000
+     6  C    0.000000   0.000000   0.000000   0.000000   0.000000   4.041851
+     7  Cl   0.000000   0.000000   0.000000   0.000000   0.000000   0.000000
+     8  Cl   0.000000   0.000000   0.000000   0.000000   0.000000   0.000000
+     9  Cl   0.000000   0.000000   0.000000   0.000000   0.000000   0.000000
+    10  Cl   0.000000   0.000000   0.000000   0.000000   0.000000   0.000000
+    11  Cl   0.000000   0.000000   0.000000   0.000000   0.000000   0.000000
+    12  Cl   0.000000   0.000000   0.000000   0.000000   0.000000   0.000000
+               7          8          9         10         11         12
+     1  C    0.000000   0.000000   0.000000   0.000000   0.000000   0.000000
+     2  C    0.000000   0.000000   0.000000   0.000000   0.000000   0.000000
+     3  C    0.000000   0.000000   0.000000   0.000000   0.000000   0.000000
+     4  C    0.000000   0.000000   0.000000   0.000000   0.000000   0.000000
+     5  C    0.000000   0.000000   0.000000   0.000000   0.000000   0.000000
+     6  C    0.000000   0.000000   0.000000   0.000000   0.000000   0.000000
+     7  Cl   7.063245   0.000000   0.000000   0.000000   0.000000   0.000000
+     8  Cl   0.000000   7.057785   0.000000   0.000000   0.000000   0.000000
+     9  Cl   0.000000   0.000000   7.057785   0.000000   0.000000   0.000000
+    10  Cl   0.000000   0.000000   0.000000   7.063245   0.000000   0.000000
+    11  Cl   0.000000   0.000000   0.000000   0.000000   7.063245   0.000000
+    12  Cl   0.000000   0.000000   0.000000   0.000000   0.000000   7.063245
+          Atomic-Atomic Spin Densities.
+               1          2          3          4          5          6
+     1  C    0.558890   0.000000   0.000000   0.000000   0.000000   0.000000
+     2  C    0.000000  -0.022323   0.000000   0.000000   0.000000   0.000000
+     3  C    0.000000   0.000000  -0.022288   0.000000   0.000000   0.000000
+     4  C    0.000000   0.000000   0.000000   0.558890   0.000000   0.000000
+     5  C    0.000000   0.000000   0.000000   0.000000  -0.022322   0.000000
+     6  C    0.000000   0.000000   0.000000   0.000000   0.000000  -0.022288
+     7  Cl   0.000000   0.000000   0.000000   0.000000   0.000000   0.000000
+     8  Cl   0.000000   0.000000   0.000000   0.000000   0.000000   0.000000
+     9  Cl   0.000000   0.000000   0.000000   0.000000   0.000000   0.000000
+    10  Cl   0.000000   0.000000   0.000000   0.000000   0.000000   0.000000
+    11  Cl   0.000000   0.000000   0.000000   0.000000   0.000000   0.000000
+    12  Cl   0.000000   0.000000   0.000000   0.000000   0.000000   0.000000
+               7          8          9         10         11         12
+     1  C    0.000000   0.000000   0.000000   0.000000   0.000000   0.000000
+     2  C    0.000000   0.000000   0.000000   0.000000   0.000000   0.000000
+     3  C    0.000000   0.000000   0.000000   0.000000   0.000000   0.000000
+     4  C    0.000000   0.000000   0.000000   0.000000   0.000000   0.000000
+     5  C    0.000000   0.000000   0.000000   0.000000   0.000000   0.000000
+     6  C    0.000000   0.000000   0.000000   0.000000   0.000000   0.000000
+     7  Cl  -0.002668   0.000000   0.000000   0.000000   0.000000   0.000000
+     8  Cl   0.000000  -0.008943   0.000000   0.000000   0.000000   0.000000
+     9  Cl   0.000000   0.000000  -0.008943   0.000000   0.000000   0.000000
+    10  Cl   0.000000   0.000000   0.000000  -0.002668   0.000000   0.000000
+    11  Cl   0.000000   0.000000   0.000000   0.000000  -0.002668   0.000000
+    12  Cl   0.000000   0.000000   0.000000   0.000000   0.000000  -0.002668
+ Mulliken charges and spin densities:
+               1          2
+     1  C   -0.232033   0.558890
+     2  C   -0.041839  -0.022323
+     3  C   -0.041851  -0.022288
+     4  C   -0.232034   0.558890
+     5  C   -0.041839  -0.022322
+     6  C   -0.041851  -0.022288
+     7  Cl  -0.063245  -0.002668
+     8  Cl  -0.057785  -0.008943
+     9  Cl  -0.057785  -0.008943
+    10  Cl  -0.063245  -0.002668
+    11  Cl  -0.063245  -0.002668
+    12  Cl  -0.063245  -0.002668
+ Sum of Mulliken charges =  -1.00000   1.00000
+ Mulliken charges and spin densities with hydrogens summed into heavy atoms:
+               1          2
+     1  C   -0.232033   0.558890
+     2  C   -0.041839  -0.022323
+     3  C   -0.041851  -0.022288
+     4  C   -0.232034   0.558890
+     5  C   -0.041839  -0.022322
+     6  C   -0.041851  -0.022288
+     7  Cl  -0.063245  -0.002668
+     8  Cl  -0.057785  -0.008943
+     9  Cl  -0.057785  -0.008943
+    10  Cl  -0.063245  -0.002668
+    11  Cl  -0.063245  -0.002668
+    12  Cl  -0.063245  -0.002668
+ Charge=             -1.0000 electrons
+ Dipole moment (field-independent basis, Debye):
+    X=             -0.0000    Y=              0.0000    Z=              0.0000  Tot=              0.0000
+ N-N= 4.241858239777D+02 E-N=-6.285962091980D+02  KE=-1.801594618848D+02
+ Symmetry A'   KE=-1.358905554941D+02
+ Symmetry A"   KE=-4.426890639069D+01
+ Symmetry A'   SP= 3.774758283726D-15
+ Symmetry A"   SP= 1.000000000000D+00
+ 1\1\GINC-SH02-02N41\FOpt\UAM1\ZDO\C6Cl6(1-,2)\JLAPIER\09-Dec-2025\0\\#
+  opt am1 SCF=XQC\\6-Chloro-Benzene Anion Radical (123456)\\-1,2\C,-3.2
+ 147042248,0.2023670066,0.\C,-1.9980920296,0.9323387701,0.\C,-0.7851291
+ 483,0.2757700128,0.\C,-0.7310790046,-1.1420053155,0.\C,-1.9476913431,-
+ 1.8719771458,0.\C,-3.1606541226,-1.215408315,0.\Cl,-4.6257478324,-2.09
+ 97378812,0.\Cl,-4.7094813102,1.011480154,0.\Cl,0.763698129,-1.95111853
+ 45,0.\Cl,-1.8870128,-3.5821987006,0.\Cl,-2.0587708849,2.6425603415,0.\
+ Cl,0.6799645664,1.1600995985,0.\\Version=ES64L-G16RevB.01\State=2-A"\H
+ F=-0.0800675\S2=0.826851\S2-1=0.\S2A=0.75085\RMSD=9.052e-09\RMSF=1.851
+ e-04\Dipole=-0.0000009,0.0000001,0.\PG=CS [SG(C6Cl6)]\\@
 
 
- NO MATTER HOW THIN YOU SLICE IT, IT'S STILL BALONEY
+ TO SEE A WORLD IN A GRAIN OF SAND
+ AND A HEAVEN IN A WILD FLOWER
+ HOLD INFINITY IN THE PALM OF YOUR HAND
+ AND ETERNITY IN AN HOUR
 
-                                   -- ALFRED E. SMITH
- Job cpu time:       0 days  0 hours  0 minutes  4.4 seconds.
- Elapsed time:       0 days  0 hours  0 minutes  7.6 seconds.
+                       -- WILLIAM BLAKE
+ Job cpu time:       0 days  0 hours  0 minutes  5.0 seconds.
+ Elapsed time:       0 days  0 hours  0 minutes 10.9 seconds.
  File lengths (MBytes):  RWF=     15 Int=      0 D2E=      0 Chk=      2 Scr=      1
- Normal termination of Gaussian 16 at Mon Dec  8 19:17:22 2025.
+ Normal termination of Gaussian 16 at Tue Dec  9 08:34:52 2025.
