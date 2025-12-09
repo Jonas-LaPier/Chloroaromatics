@@ -15,7 +15,7 @@
 
 # Specify the array range: will be calculated dynamically based on input files
 # Note: You can override this by passing --array=N-M on the command line
-#SBATCH --array=1-46
+#SBATCH --array=1-58
 
 # Send output to a named file for each task
 #SBATCH --output=slurm_out/gaussian.%A_%a.out
