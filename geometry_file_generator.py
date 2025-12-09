@@ -5,7 +5,7 @@ import os
 GAUSSIAN_HEADER = """%mem=2GB
 %nprocshare=1
 %chk=geometry_chks/{filename}.chk
-# opt am1
+# opt am1 SCF(maxcyc=10000)
 
 {title}
 
@@ -141,7 +141,7 @@ def generate_anion_intermediates(position_list):
 
         # Anion radical electronic state
         charge = "-1"
-        multiplicity = "0"
+        multiplicity = "1"
 
         # Assemble atoms
         all_atoms = list(C_ATOMS)
