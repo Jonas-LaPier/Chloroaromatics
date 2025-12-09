@@ -22,7 +22,7 @@
 #SBATCH --error=slurm_error/gaussian.%A_%a.err
 
 # --- Configuration Variables (Modify these for your workflow) ---
-INPUT_DIR="frequency_input"        # Directory containing .gjf input files
+INPUT_DIR="frequency_inputs"        # Directory containing .gjf input files
 CHK_OUTPUT_DIR="frequency_chks"    # Directory for .chk checkpoint files
 LOG_OUTPUT_DIR="frequency_logs"    # Directory for Gaussian log files
 
