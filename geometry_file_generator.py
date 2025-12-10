@@ -177,14 +177,17 @@ def generate_neutral_radicals_intermediates(position_list):
     for removed in original_positions:
         # Build the compact pattern showing retained digits and underscore
         pattern_parts = []
+        original_parts = []
         for i in range(1, 7):
             if i in original_positions:
+                original_parts.append(str(i))
                 if i == removed:
                     pattern_parts.append("_")
                 else:
                     pattern_parts.append(str(i))
         pattern = "".join(pattern_parts)
-        filename_base = f"{pattern}ClBzNeutralRadical"
+        parent = "".join(original_parts)
+        filename_base = f"{parent}-{pattern}-ClBzNeutralRadical"
         title = f"Neutral Radical (removed {removed}) {pattern}"
 
         # New positions: remove the selected chlorine
@@ -225,6 +228,7 @@ if __name__ == "__main__":
     
     generated_files = []
     
+    '''
     # Generate initial chlorobenzene isomers
     for positions in CHLORINE_POSITIONS:
         filepath, _ = generate_gjf_files(positions)
@@ -234,8 +238,9 @@ if __name__ == "__main__":
     print(f"Successfully simulated the creation of {len(generated_files)} GJF files.")
     print("File names generated (e.g., for use in a SLURM Job Array):")
     print("-" * 50)
-    
+    '''
 
+    '''
     # Generate anion radicals
     for positions in CHLORINE_POSITIONS:
         filepath = generate_anion_radicals(positions)
@@ -245,6 +250,7 @@ if __name__ == "__main__":
     print(f"Successfully simulated the creation of {len(generated_files)} GJF files.")
     print("File names generated (e.g., for use in a SLURM Job Array):")
     print("-" * 50)
+    '''
 
     # Generate neutral radical intermediates
     for positions in CHLORINE_POSITIONS:
