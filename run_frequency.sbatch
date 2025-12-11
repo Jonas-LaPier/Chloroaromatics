@@ -29,6 +29,10 @@ LOG_OUTPUT_DIR="frequency_logs"    # Directory for Gaussian log files
 # Ensure output directories exist
 mkdir -p slurm_out slurm_error "$CHK_OUTPUT_DIR" "$LOG_OUTPUT_DIR"
 
+# Clear any existing SLURM output/error files to avoid clutter
+# (safe no-op if directories are empty)
+rm -f slurm_out/* slurm_error/* 2>/dev/null || true
+
 # --- Job Execution Commands ---
 
 echo "--- Starting Gaussian Job Array Task ---"
