@@ -9,7 +9,7 @@
 #SBATCH --time=0-02:00:00
 
 #SBATCH --cpus-per-task=4        # request 4 CPUs per task (Gaussian can use multiple)
-#SBATCH --ntasks=1               # request 1 task per job
+#SBATCH --ntasks=1               # request 1 task per job (change based on number of files)
 #SBATCH --mem-per-cpu=2100MB        # request 2.1 GB per CPU (8.4 GB total)
 #SBATCH --nodes=1                # request 1 node
 
